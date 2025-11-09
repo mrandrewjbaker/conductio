@@ -6,8 +6,8 @@ import { GenerationRequest } from '../types';
 
 const execAsync = promisify(exec);
 
-export class ConductioService {
-  private static readonly CONDUCTIO_SERVICE_PATH = path.join(process.cwd(), '..', 'conductio-service');
+export class ConductioEngine {
+  private static readonly CONDUCTIO_ENGINE_PATH = path.join(process.cwd(), '..', 'conductio-engine');
   private static readonly PYTHON_CMD = './venv/bin/python';
   
   private static normalizeInstrumentName(instrument: string): string {
@@ -35,17 +35,17 @@ export class ConductioService {
   
   static async checkAvailability(): Promise<boolean> {
     try {
-      // Check if conductio-service directory exists
-      await fs.access(this.CONDUCTIO_SERVICE_PATH);
+      // Check if conductio-engine directory exists
+      await fs.access(this.CONDUCTIO_ENGINE_PATH);
       
       // Try to run a simple command to verify Python environment
-      const { stdout } = await execAsync(`cd "${this.CONDUCTIO_SERVICE_PATH}" && ${this.PYTHON_CMD} --version`, {
+      const { stdout } = await execAsync(`cd "${this.CONDUCTIO_ENGINE_PATH}" && ${this.PYTHON_CMD} --version`, {
         timeout: 5000
       });
       
       return stdout.includes('Python');
     } catch (error) {
-      console.error('Conductio service availability check failed:', error);
+      console.error('Conductio engine availability check failed:', error);
       return false;
     }
   }
@@ -84,7 +84,7 @@ export class ConductioService {
         args.push('--no-audio');
       }
       
-      const cmd = `cd "${this.CONDUCTIO_SERVICE_PATH}" && ${this.PYTHON_CMD} ${args.join(' ')}`;
+      const cmd = `cd "${this.CONDUCTIO_ENGINE_PATH}" && ${this.PYTHON_CMD} ${args.join(' ')}`;
       console.log('Executing:', cmd);
       
       const { stdout, stderr } = await execAsync(cmd, {
@@ -107,7 +107,7 @@ export class ConductioService {
       
       return {
         success: true,
-        outputPath: path.join(this.CONDUCTIO_SERVICE_PATH, outputPath)
+        outputPath: path.join(this.CONDUCTIO_ENGINE_PATH, outputPath)
       };
       
     } catch (error) {
@@ -125,7 +125,7 @@ export class ConductioService {
     error?: string;
   }> {
     try {
-      const cmd = `cd "${this.CONDUCTIO_SERVICE_PATH}" && ${this.PYTHON_CMD} -c "
+      const cmd = `cd "${this.CONDUCTIO_ENGINE_PATH}" && ${this.PYTHON_CMD} -c "
 from generation.instruments import list_instruments_by_category
 import json
 categories = list_instruments_by_category()

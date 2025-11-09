@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { HealthStatus, ApiResponse } from '../types';
-import { ConductioService } from '../services/conductioService';
+import { ConductioService } from '../services/conductioEngine';
 
 const router = Router();
 

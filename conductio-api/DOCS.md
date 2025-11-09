@@ -48,7 +48,7 @@ All responses follow this standard format:
 ### Health & Information
 
 #### `GET /health`
-Check API health and service availability.
+Check API health and engine availability.
 
 **Response:**
 ```json
@@ -60,7 +60,7 @@ Check API health and service availability.
     "uptime": 3600,
     "version": "1.0.0",
     "services": {
-      "conductioService": "available",
+      "conductioEngine": "available",
       "python": "available"
     }
   }
@@ -457,7 +457,7 @@ if response.ok:
 - `400 Bad Request` - Invalid parameters
 - `404 Not Found` - Resource not found
 - `500 Internal Server Error` - Generation failed
-- `503 Service Unavailable` - Conductio service unavailable
+- `503 Engine Unavailable` - Conductio engine unavailable
 
 ### Error Response Format
 
@@ -474,8 +474,8 @@ if response.ok:
 | Error | Cause | Solution |
 |-------|-------|----------|
 | "Invalid layer" | Layer not in allowed values | Use: melody, bass, drums, or chords |
-| "Generation failed" | Python service error | Check service logs, try again |
-| "Service unavailable" | Conductio service down | Ensure Python service is running |
+| "Generation failed" | Conductio engine error | Check conductio engine logs, try again |
+| "Service unavailable" | Conductio engine down | Ensure Python service is running |
 | "Invalid instrument" | Unknown instrument name | Check `/instruments` endpoint |
 | "unrecognized arguments" | Instrument name with spaces not quoted | Use underscore format: "honky_tonk_piano" |
 
@@ -568,7 +568,7 @@ This will test all endpoints and generate sample files.
 
 For issues or questions:
 1. Check the health endpoint: `GET /api/health`
-2. Verify the Conductio Python service is running
+2. Verify the Conductio Python engine is running
 3. Check the API logs for error details
 4. Ensure all required dependencies are installed
 

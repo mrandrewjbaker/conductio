@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { ApiResponse, Instrument, InstrumentCategory } from '../types';
-import { ConductioService } from '../services/conductioService';
+import { ConductioService } from '../services/conductioEngine';
 
 const router = Router();
 

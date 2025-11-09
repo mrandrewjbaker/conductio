@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs/promises';
 import { GenerationRequest, GenerationResponse, ApiResponse } from '../types';
-import { ConductioService } from '../services/conductioService';
+import { ConductioService } from '../services/conductioEngine';
 
 const router = Router();
 

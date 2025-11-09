@@ -52,7 +52,7 @@ export interface HealthStatus {
   uptime: number;
   version: string;
   services: {
-    conductioService: 'available' | 'unavailable';
+    conductioEngine: 'available' | 'unavailable';
     python: 'available' | 'unavailable';
   };
 }

@@ -7,7 +7,7 @@ Generate musical patterns using AI and render them as MIDI and audio files. Cond
 ## Quick Start
 
 ```bash
-cd conductio-service
+cd conductio-engine
 source venv/bin/activate
 python main.py --layer melody --key "C major" --bpm 120 --bars 8
 ```

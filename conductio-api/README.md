@@ -1,6 +1,6 @@
 # Conductio API
 
-REST API server for the Conductio AI Music Generation System. This Express.js/TypeScript API provides HTTP endpoints to interact with the Python-based Conductio service.
+REST API server for the Conductio AI Music Generation System. This Express.js/TypeScript API provides HTTP endpoints to interact with the Python-based Conductio engine.
 
 ## Features
 
@@ -9,12 +9,12 @@ REST API server for the Conductio AI Music Generation System. This Express.js/Ty
 - 🎨 **Genre-Aware**: AI prompts adapted for different musical genres
 - 📁 **File Management**: Download generated MIDI and audio files
 - 💾 **Job Tracking**: Asynchronous generation with status monitoring
-- 🔍 **Health Checks**: Service availability monitoring
+- 🔍 **Health Checks**: Engine availability monitoring
 
 ## API Endpoints
 
 ### Health & Info
-- `GET /api/health` - Health check and service status
+- `GET /api/health` - Health check and engine status
 - `GET /api/health/info` - API documentation and examples
 
 ### Music Generation
@@ -144,7 +144,7 @@ src/
 ## Requirements
 
 - Node.js 18+
-- Conductio Python service (in sibling directory)
+- Conductio Python engine (in sibling directory)
 - Python 3.13+ with virtual environment
 
 ## Configuration
